@@ -1,7 +1,11 @@
 package com.ga.gAAcademy.GermanParodi.webservices.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +22,18 @@ public class Topic_Controller {
 	public Topic createtopic(@RequestBody Topic imputTopic) {
 	Topic returnTopic= topic_Service.createTopic(imputTopic);
 	
+	
+	
 	return returnTopic;
 }
+	
+	@GetMapping("/topic")
+	public List<Topic> getAll()
+	{
+		List<Topic> get= topic_Service.getAll();
+				return get;
+	}
+	
+	
+	
 }

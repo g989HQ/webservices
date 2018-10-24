@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-
 public class Topic {
 	
 	@Id
@@ -16,7 +15,7 @@ public class Topic {
 	private int id;
 	@Column(name="title")
 	private String title;
-	@Column(name="date post")
+	@Column(name="date_post")
 	private Date datepost;
 	@Column(name="descirpcion")
 	private String descirpcion;

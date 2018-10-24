@@ -1,5 +1,7 @@
 package com.ga.gAAcademy.GermanParodi.webservices.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +18,21 @@ public class Topic_Service {
 		Topic t = topicRepository.save(imputTopic);
 		return t;
 	}
-	
+	/*
+public List  {
 
+	topics
+	List<Type> list3 = new ArrayList<Type>(list1);
+	list3.addAll(list2);
+	
+}
+*/
+public List<Topic> getAll() {
+	// TODO Auto-generated method stub
+
+	
+	return topicRepository.findAll();
+}
 	
 	
 }
