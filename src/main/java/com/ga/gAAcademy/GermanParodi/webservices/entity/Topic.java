@@ -27,6 +27,7 @@ public Topic() {}
 public Topic(String title, Date datepost, String descirpcion, String author) {
 	super();
 	this.title = title;
+	//Date d=New Date();
 	this.datepost = datepost;
 	this.descirpcion = descirpcion;
 	this.author = author;

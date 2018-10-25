@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.ga.gAAcademy.GermanParodi.webservices.entity.Topic;
 import com.ga.gAAcademy.GermanParodi.webservices.repository.TopicRepository;
@@ -18,20 +20,36 @@ public class Topic_Service {
 		Topic t = topicRepository.save(imputTopic);
 		return t;
 	}
-	/*
-public List  {
 
-	topics
-	List<Type> list3 = new ArrayList<Type>(list1);
-	list3.addAll(list2);
+	@GetMapping("/topic/{id}")
+	public Topic getTopicById(@PathVariable int id){
+		Topic t = topicRepository.findById(id).get();
+		return t;
+	}
 	
-}
-*/
+	
 public List<Topic> getAll() {
 	// TODO Auto-generated method stub
 
 	
 	return topicRepository.findAll();
+}
+
+public Topic updateTopic(int id, Topic updateTopic) {
+
+	Topic toupdateTopic= topicRepository.findById(id).get(); 
+	if(updateTopic.getAuthor()!=null) {
+		toupdateTopic.setAuthor(updateTopic.getAuthor());
+	}
+	if(updateTopic.getTitle()!=null) {
+		toupdateTopic.setTitle(updateTopic.getTitle());
+	}
+	if(updateTopic.getDescirpcion()!=null) {
+		toupdateTopic.setDescirpcion(updateTopic.getDescirpcion());
+	}
+	toupdateTopic= topicRepository.save(toupdateTopic);
+			return null;
+	
 }
 	
 	
