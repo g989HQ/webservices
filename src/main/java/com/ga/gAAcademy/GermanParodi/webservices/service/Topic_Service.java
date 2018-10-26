@@ -3,6 +3,7 @@ package com.ga.gAAcademy.GermanParodi.webservices.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,19 @@ public class Topic_Service {
 
 	@Autowired 
 	TopicRepository topicRepository;
+	
+	public int deleteTopicLogic(int id) {
+		int toreturn=0;
+		Topic t=topicRepository.findById(id).get();
+		if (t.getDeleted()) {
+			t.delete();
+			toreturn=t.getId();
+			topicRepository.save(t);
+		}
+		return toreturn;
+		
+	}
+	
 
 	public Topic createTopic(Topic imputTopic) {
 		Topic t = topicRepository.save(imputTopic);
@@ -50,6 +64,13 @@ public Topic updateTopic(int id, Topic updateTopic) {
 	toupdateTopic= topicRepository.save(toupdateTopic);
 			return null;
 	
+}
+
+public int deleteTopic(int id) {
+
+
+	topicRepository.deleteById(id);
+	return 0;
 }
 	
 	

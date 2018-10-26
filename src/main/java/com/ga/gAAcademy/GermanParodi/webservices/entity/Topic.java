@@ -21,7 +21,8 @@ public class Topic {
 	private String descirpcion;
 	@Column(name="author")
 	private String author;
-	
+	@Column(name="Status")
+	private boolean deleted;
 public Topic() {}
 
 public Topic(String title, Date datepost, String descirpcion, String author) {
@@ -31,6 +32,7 @@ public Topic(String title, Date datepost, String descirpcion, String author) {
 	this.datepost = datepost;
 	this.descirpcion = descirpcion;
 	this.author = author;
+	
 }
 
 public String getTitle() {
@@ -65,8 +67,24 @@ public void setAuthor(String author) {
 	this.author = author;
 }
 
+public boolean getDeleted() {
+	return deleted;
+}
+
+public void setDeleted(boolean deleted) {
+	this.deleted = deleted;
+}
+
+
+
 public int getId() {
 	return id;
+}
+
+public void delete() {
+	this.deleted=true;
+	//desde aca se maneja el estado
+
 }
 	
 }
