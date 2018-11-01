@@ -1,6 +1,8 @@
 package com.ga.gAAcademy.GermanParodi.webservices.service;
 
+import java.util.Date;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import com.ga.gAAcademy.GermanParodi.webservices.entity.Reply;
 import com.ga.gAAcademy.GermanParodi.webservices.entity.Topic;
+import com.ga.gAAcademy.GermanParodi.webservices.repository.ReplyRepository;
 import com.ga.gAAcademy.GermanParodi.webservices.repository.TopicRepository;
 
 @Service
@@ -16,6 +20,7 @@ public class Topic_Service {
 
 	@Autowired 
 	TopicRepository topicRepository;
+	ReplyRepository replyRepository;
 	
 	public int deleteTopicLogic(int id) {
 		int toreturn=0;
@@ -73,5 +78,34 @@ public int deleteTopic(int id) {
 	return 0;
 }
 	
-	
+public void createReply(Reply reply) {	
+reply.setDate(new Date());
+replyRepository.save(reply);
+}
+
+public List<Reply> getReplys(int id){
+	return topicRepository.findById(id).get().getListofReplies();
+}
+
+public List<Reply> getReplies(int id) throws NoSuchElementException{
+	return replyRepository.findAllById(topicRepository.findById(id).get());
+} 
+
+
+public void deletedAllReplies(int id) {
+	Topic t= topicRepository.findById(id).get();
+	t.deleteListofReplies();
+	topicRepository.save(t);
+}
+
+public Reply updateReplyById(int id, Reply reply) throws NoSuchElementException{
+	Reply toupdate=replyRepository.findById(id).get();
+	if(reply.getDescirpcion() !=null) {
+		toupdate.setDescirpcion(reply.getDescirpcion());
+	}
+	replyRepository.save(toupdate);
+	return toupdate;
+}
+
+
 }

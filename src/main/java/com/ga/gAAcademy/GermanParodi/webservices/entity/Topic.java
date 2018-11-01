@@ -1,11 +1,16 @@
 package com.ga.gAAcademy.GermanParodi.webservices.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;//
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Topic {
@@ -23,6 +28,11 @@ public class Topic {
 	private String author;
 	@Column(name="Status")
 	private boolean deleted;
+	
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="topic",cascade=CascadeType.ALL, orphanRemoval=true)
+    private List<Reply> ListofReplies= new ArrayList<Reply>();	
+	
+	
 public Topic() {}
 
 public Topic(String title, Date datepost, String descirpcion, String author) {
@@ -32,6 +42,7 @@ public Topic(String title, Date datepost, String descirpcion, String author) {
 	this.datepost = datepost;
 	this.descirpcion = descirpcion;
 	this.author = author;
+	this.ListofReplies= ListofReplies;
 	
 }
 
@@ -75,6 +86,13 @@ public void setDeleted(boolean deleted) {
 	this.deleted = deleted;
 }
 
+public List<Reply> getListofReplies() {
+	return ListofReplies;
+}
+
+public void setListofReplies(ArrayList<Reply> ListofReplies) {
+	this.ListofReplies = ListofReplies;
+}
 
 
 public int getId() {
@@ -85,6 +103,11 @@ public void delete() {
 	this.deleted=true;
 	//desde aca se maneja el estado
 
+}
+
+public void deleteListofReplies() {
+	// TODO Auto-generated method stub
+	
 }
 	
 }
