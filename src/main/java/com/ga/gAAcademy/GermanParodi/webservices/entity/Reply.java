@@ -1,4 +1,4 @@
-package com.ga.gAAcademy.GermanParodi.webservices.entity;
+/*package com.ga.gAAcademy.GermanParodi.webservices.entity;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -80,3 +80,4 @@ public class Reply {
 	
 
 }
+*/

@@ -3,6 +3,7 @@ package com.ga.gAAcademy.GermanParodi.webservices.controller;
 import java.util.List;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ga.gAAcademy.GermanParodi.webservices.entity.Topic;
-import com.ga.gAAcademy.GermanParodi.webservices.repository.TopicRepository;
+//import com.ga.gAAcademy.GermanParodi.webservices.repository.TopicRepository;
 import com.ga.gAAcademy.GermanParodi.webservices.service.Topic_Service;
 
 @RestController
@@ -52,7 +53,7 @@ public class Topic_Controller {
 		Topic t=topic_Service.updateTopic(id,updateTopic);
 		return t;
 	}
-	@DeleteMapping("/topic/{id}")
+	/*@DeleteMapping("/topic/{id}")
 	public ResponseEntity<?> deleteTopic(@PathVariable int id){
 		
 		int idTopicBorrar =topic_Service.deleteTopic(id);
@@ -61,7 +62,9 @@ public class Topic_Controller {
 		
 		return new ResponseEntity<String>(a,HttpStatus.OK);
 		
-	}
+	}*/
+	
+	//agregar un reply, borrado, y modificarlos
 	
 	@DeleteMapping("/topic/logic/{id}")
 	public ResponseEntity<?> deleteTopicLogic(@PathVariable int id){

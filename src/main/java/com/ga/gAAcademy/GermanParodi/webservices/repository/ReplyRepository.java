@@ -1,4 +1,4 @@
-package com.ga.gAAcademy.GermanParodi.webservices.repository;
+/*package com.ga.gAAcademy.GermanParodi.webservices.repository;
 
 import java.util.List;
 
@@ -14,3 +14,4 @@ public interface ReplyRepository extends JpaRepository<Reply,Integer> {
 
 
 }
+*/

@@ -29,10 +29,10 @@ public class Topic {
 	@Column(name="Status")
 	private boolean deleted;
 	
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="topic",cascade=CascadeType.ALL, orphanRemoval=true)
+/*	@OneToMany(fetch=FetchType.LAZY, mappedBy="topic",cascade=CascadeType.ALL, orphanRemoval=true)
     private List<Reply> ListofReplies= new ArrayList<Reply>();	
 	
-	
+	*/
 public Topic() {}
 
 public Topic(String title, Date datepost, String descirpcion, String author) {
@@ -42,9 +42,11 @@ public Topic(String title, Date datepost, String descirpcion, String author) {
 	this.datepost = datepost;
 	this.descirpcion = descirpcion;
 	this.author = author;
-	this.ListofReplies= ListofReplies;
+	//this.ListofReplies= ListofReplies;
 	
 }
+
+
 
 public String getTitle() {
 	return title;
@@ -86,6 +88,7 @@ public void setDeleted(boolean deleted) {
 	this.deleted = deleted;
 }
 
+/*
 public List<Reply> getListofReplies() {
 	return ListofReplies;
 }
@@ -93,7 +96,7 @@ public List<Reply> getListofReplies() {
 public void setListofReplies(ArrayList<Reply> ListofReplies) {
 	this.ListofReplies = ListofReplies;
 }
-
+*/
 
 public int getId() {
 	return id;
